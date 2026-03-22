@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الخصوصية - المحتال</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy-deep: #0f0f1a;
+            --navy: #1a1a2e;
+            --navy-mid: #16213e;
+            --navy-light: #0f3460;
+            --emerald: #0a8a4a;
+            --emerald-dark: #087a3e;
+            --gold: #f5a623;
+            --text: #e0e0e0;
+            --text-muted: #b8b8cc;
+            --text-dim: #6B6580;
+            --border: #3D3654;
+            --card: #1E1B2A;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            background: var(--navy-deep);
+            color: var(--text);
+            line-height: 1.8;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 50%, var(--navy-light) 100%);
+            z-index: -3;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(10, 138, 74, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(245, 166, 35, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(15, 52, 96, 0.12) 0%, transparent 70%);
+            z-index: -2;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 32px 24px 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 48px 0 32px;
+        }
+
+        .hero h1 {
+            font-family: 'Rakkas', serif;
+            color: var(--gold);
+            font-size: 42px;
+            font-weight: 400;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 12px rgba(245, 166, 35, 0.2);
+        }
+
+        .hero .subtitle {
+            font-family: 'Rakkas', serif;
+            color: var(--emerald);
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .date {
+            color: var(--text-dim);
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .intro {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 24px;
+            margin-bottom: 32px;
+            font-size: 16px;
+            line-height: 1.9;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-family: 'Rakkas', serif;
+            color: var(--gold);
+            font-size: 22px;
+            font-weight: 400;
+            margin-top: 36px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        p, li {
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+            line-height: 1.9;
+        }
+
+        strong {
+            color: var(--text);
+        }
+
+        ul {
+            padding-right: 24px;
+            margin-bottom: 16px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        li strong {
+            color: var(--emerald);
+        }
+
+        a {
+            color: var(--emerald);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: var(--gold);
+        }
+
+        .section-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin: 16px 0;
+        }
+
+        .contact-box {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 28px;
+            margin-top: 16px;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-box a {
+            font-size: 18px;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .contact-box p {
+            color: var(--text-dim);
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: var(--emerald);
+        }
+
+        .footer .copyright {
+            margin-top: 12px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 20px 16px 40px; }
+            .hero { padding: 32px 0 24px; }
+            .hero h1 { font-size: 34px; }
+            .hero .subtitle { font-size: 17px; }
+            .intro { padding: 18px; }
+            h2 { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="hero">
+        <h1>المحتال</h1>
+        <div class="subtitle">سياسة الخصوصية</div>
+    </div>
+
+    <p class="date">آخر تحديث: 5 مارس 2026</p>
+
+    <div class="intro">
+        مرحبا بك في تطبيق <strong>المحتال</strong>. نحن نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية. توضح هذه السياسة كيف نجمع بياناتك ونستخدمها ونحميها.
+    </div>
+
+    <h2>1. البيانات التي نجمعها</h2>
+    <p>نجمع الأنواع التالية من البيانات:</p>
+    <ul>
+        <li><strong>بيانات الحساب:</strong> البريد الإلكتروني واسم العرض عند إنشاء حساب</li>
+        <li><strong>بيانات اللعب:</strong> إحصائيات اللعب، سجل المباريات، النقاط، والمستوى</li>
+        <li><strong>بيانات التخصيص:</strong> اختيارات الشخصية والصورة الشخصية</li>
+        <li><strong>بيانات الجهاز:</strong> نوع الجهاز ونظام التشغيل لتحسين أداء التطبيق</li>
+        <li><strong>رمز الإشعارات:</strong> يتم إرسال رمز الإشعارات إلى خدمة Firebase Cloud Messaging لتوصيل الإشعارات</li>
+    </ul>
+
+    <h2>2. كيف نستخدم بياناتك</h2>
+    <p>نستخدم بياناتك للأغراض التالية:</p>
+    <ul>
+        <li>إنشاء حسابك وإدارته</li>
+        <li>تشغيل اللعبة الجماعية في الوقت الفعلي</li>
+        <li>عرض لوحة المتصدرين والإحصائيات</li>
+        <li>تحسين تجربة اللعب وأداء التطبيق</li>
+        <li>إرسال إشعارات متعلقة باللعبة (إذا سمحت بذلك)</li>
+    </ul>
+
+    <h2>3. مشاركة البيانات</h2>
+    <p>نحن <strong>لا نبيع</strong> بياناتك الشخصية لأي طرف ثالث. قد تكون البيانات التالية مرئية للاعبين الآخرين:</p>
+    <ul>
+        <li>اسم العرض</li>
+        <li>الصورة الشخصية والشخصية المختارة</li>
+        <li>المستوى والرتبة</li>
+    </ul>
+    <p>نستخدم الخدمات التالية من أطراف ثالثة:</p>
+    <ul>
+        <li><strong>Supabase:</strong> لتخزين البيانات والمصادقة</li>
+        <li><strong>Firebase Cloud Messaging:</strong> لتوصيل الإشعارات الفورية</li>
+        <li><strong>Expo Push Notifications:</strong> كوسيط لإرسال الإشعارات</li>
+    </ul>
+
+    <h2>4. تخزين البيانات وحمايتها</h2>
+    <p>نستخدم خدمة <strong>Supabase</strong> لتخزين البيانات بشكل آمن مع تشفير البيانات أثناء النقل والتخزين. نتخذ إجراءات أمنية مناسبة لحماية بياناتك من الوصول غير المصرح به.</p>
+
+    <h2>5. حقوقك</h2>
+    <p>لديك الحقوق التالية:</p>
+    <ul>
+        <li><strong>الوصول:</strong> يمكنك الاطلاع على بياناتك من خلال صفحة الملف الشخصي</li>
+        <li><strong>التعديل:</strong> يمكنك تعديل اسم العرض والصورة الشخصية في أي وقت</li>
+        <li><strong>الحذف:</strong> يمكنك حذف حسابك بالكامل من إعدادات الملف الشخصي، وسيتم حذف جميع بياناتك نهائيا</li>
+    </ul>
+
+    <h2>6. اللعب كضيف</h2>
+    <p>يمكنك اللعب كضيف بدون إنشاء حساب. في هذه الحالة، يتم إنشاء حساب مؤقت مجهول الهوية ولا نجمع بريدك الإلكتروني.</p>
+
+    <h2>7. الأطفال</h2>
+    <p>هذا التطبيق غير موجه للأطفال دون سن 13 عاما. لا نجمع بيانات من أطفال دون هذا السن عن قصد.</p>
+
+    <h2>8. الإعلانات</h2>
+    <p>لا يحتوي التطبيق على إعلانات.</p>
+
+    <h2>9. التغييرات على هذه السياسة</h2>
+    <p>قد نقوم بتحديث هذه السياسة من وقت لآخر. سنقوم بإعلامك بأي تغييرات جوهرية عبر التطبيق.</p>
+
+    <h2>10. تواصل معنا</h2>
+    <p>إذا كانت لديك أي أسئلة حول سياسة الخصوصية، يمكنك التواصل معنا:</p>
+    <div class="contact-box">
+        <a href="mailto:molu18624dev@gmail.com?subject=سياسة الخصوصية - المحتال">molu18624dev@gmail.com</a>
+        <p>أو قم بزيارة <a href="support.html">صفحة الدعم</a></p>
+    </div>
+
+    <div class="footer">
+        <a href="support.html">الدعم الفني</a>
+        <div class="copyright">المحتال &copy; 2026 - جميع الحقوق محفوظة</div>
+    </div>
+
+</div>
+
+</body>
+</html>

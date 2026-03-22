@@ -4,133 +4,345 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>الدعم - المحتال</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --navy-deep: #0f0f1a;
+            --navy: #1a1a2e;
+            --navy-mid: #16213e;
+            --navy-light: #0f3460;
+            --emerald: #0a8a4a;
+            --emerald-dark: #087a3e;
+            --gold: #f5a623;
+            --gold-dim: #d4911e;
+            --text: #e0e0e0;
+            --text-muted: #b8b8cc;
+            --text-dim: #6B6580;
+            --border: #3D3654;
+            --card: #1E1B2A;
+            --card-elevated: #262336;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
-            background: #0f0f1a;
-            color: #e0e0e0;
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            background: var(--navy-deep);
+            color: var(--text);
             line-height: 1.8;
-            padding: 24px;
-            max-width: 800px;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Atmospheric gradient background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy-mid) 50%, var(--navy-light) 100%);
+            z-index: -3;
+        }
+
+        /* Subtle geometric pattern overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(10, 138, 74, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(245, 166, 35, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(15, 52, 96, 0.12) 0%, transparent 70%);
+            z-index: -2;
+        }
+
+        .container {
+            max-width: 720px;
             margin: 0 auto;
+            padding: 32px 24px 48px;
+            position: relative;
+            z-index: 1;
         }
-        h1 {
-            color: #f5a623;
-            font-size: 28px;
+
+        /* Header / Hero */
+        .hero {
+            text-align: center;
+            padding: 48px 0 40px;
+        }
+
+        .app-icon {
+            width: 88px;
+            height: 88px;
+            border-radius: 22px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+
+        .hero h1 {
+            font-family: 'Rakkas', serif;
+            color: var(--gold);
+            font-size: 42px;
+            font-weight: 400;
+            margin-bottom: 4px;
+            text-shadow: 0 2px 12px rgba(245, 166, 35, 0.2);
+        }
+
+        .hero .subtitle {
+            font-family: 'Rakkas', serif;
+            color: var(--emerald);
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .hero .tagline {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-top: 8px;
+        }
+
+        /* Section headings */
+        h2 {
+            font-family: 'Rakkas', serif;
+            color: var(--gold);
+            font-size: 24px;
+            font-weight: 400;
+            margin-top: 40px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2 .icon {
+            font-size: 22px;
+        }
+
+        /* Contact form card */
+        .contact-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 28px;
+            margin: 20px 0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-card .form-label {
+            display: block;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 600;
             margin-bottom: 8px;
-            text-align: center;
         }
-        .subtitle {
-            color: #999;
-            text-align: center;
-            margin-bottom: 32px;
+
+        .contact-card input,
+        .contact-card textarea {
+            width: 100%;
+            background: var(--navy-deep);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            color: var(--text);
+            padding: 14px 16px;
+            font-size: 16px;
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            margin-bottom: 16px;
+            direction: rtl;
+            transition: border-color 0.2s;
+        }
+
+        .contact-card input::placeholder,
+        .contact-card textarea::placeholder {
+            color: var(--text-dim);
+        }
+
+        .contact-card input:focus,
+        .contact-card textarea:focus {
+            outline: none;
+            border-color: var(--emerald);
+            box-shadow: 0 0 0 3px rgba(10, 138, 74, 0.15);
+        }
+
+        .contact-card textarea {
+            min-height: 130px;
+            resize: vertical;
+            line-height: 1.7;
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, var(--emerald), var(--emerald-dark));
+            color: #fff;
+            border: none;
+            border-radius: var(--radius-md);
+            padding: 16px 32px;
+            font-size: 17px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            transition: transform 0.15s, box-shadow 0.15s;
+            box-shadow: 0 4px 12px rgba(10, 138, 74, 0.3);
+        }
+
+        .send-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(10, 138, 74, 0.4);
+        }
+
+        .send-btn:active {
+            transform: translateY(0);
+        }
+
+        /* FAQ cards */
+        .faq-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            margin-bottom: 12px;
+            transition: border-color 0.2s;
+        }
+
+        .faq-item:hover {
+            border-color: rgba(245, 166, 35, 0.3);
+        }
+
+        .faq-item strong {
+            font-family: 'IBM Plex Sans Arabic', sans-serif;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 8px;
             font-size: 16px;
         }
-        h2 {
-            color: #0a8a4a;
-            font-size: 20px;
-            margin-top: 32px;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #2a2a3a;
+
+        .faq-item p {
+            color: var(--text-muted);
+            font-size: 15px;
+            line-height: 1.8;
         }
-        .contact-card {
-            background: #1a1a2e;
-            border: 1px solid #2a2a3a;
-            border-radius: 12px;
-            padding: 24px;
-            margin: 24px 0;
-            text-align: center;
-        }
-        .contact-card a {
-            color: #0a8a4a;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .contact-card a:hover {
-            text-decoration: underline;
-        }
-        .contact-card p {
-            color: #999;
-            margin-top: 8px;
-            font-size: 14px;
-        }
-        .faq-item {
-            background: #1a1a2e;
-            border: 1px solid #2a2a3a;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 12px;
-        }
-        .faq-item strong {
-            color: #f5a623;
-            display: block;
-            margin-bottom: 6px;
-        }
+
+        /* Footer */
         .footer {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #2a2a3a;
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
             text-align: center;
-            color: #666;
+            color: var(--text-dim);
             font-size: 14px;
         }
+
         .footer a {
-            color: #0a8a4a;
+            color: var(--emerald);
             text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: var(--gold);
+        }
+
+        .footer .copyright {
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-dim);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container { padding: 20px 16px 40px; }
+            .hero { padding: 32px 0 28px; }
+            .hero h1 { font-size: 34px; }
+            .hero .subtitle { font-size: 17px; }
+            .contact-card { padding: 20px; }
+            h2 { font-size: 21px; }
         }
     </style>
 </head>
 <body>
 
-<h1>المحتال - الدعم</h1>
-<p class="subtitle">لعبة الكلمات الجماعية</p>
+<div class="container">
 
-<h2>تواصل معنا</h2>
-<div class="contact-card">
-    <a href="mailto:molu18624dev@gmail.com?subject=دعم تطبيق المحتال">molu18624dev@gmail.com</a>
-    <p>أرسل لنا بريدا إلكترونيا وسنرد عليك في أقرب وقت ممكن</p>
+    <!-- Hero -->
+    <div class="hero">
+        <h1>المحتال</h1>
+        <div class="subtitle">الدعم الفني</div>
+        <div class="tagline">لعبة الكلمات الجماعية</div>
+    </div>
+
+    <!-- Contact Form -->
+    <h2><span class="icon">&#9993;</span> تواصل معنا</h2>
+    <div class="contact-card">
+        <label class="form-label">البريد الإلكتروني</label>
+        <input type="email" id="user-email" placeholder="بريدك الإلكتروني للرد عليك" />
+
+        <label class="form-label">رسالتك</label>
+        <textarea id="user-message" placeholder="صف لنا المشكلة أو الاستفسار بالتفصيل..."></textarea>
+
+        <button class="send-btn" onclick="sendSupport()">إرسال الرسالة</button>
+    </div>
+
+    <!-- FAQ -->
+    <h2><span class="icon">&#10067;</span> الأسئلة الشائعة</h2>
+
+    <div class="faq-item">
+        <strong>كيف أبدأ اللعب؟</strong>
+        <p>سجل دخولك أو ادخل كضيف، ثم أنشئ غرفة جديدة أو انضم إلى غرفة موجودة. تحتاج على الأقل 3 لاعبين لبدء اللعبة.</p>
+    </div>
+
+    <div class="faq-item">
+        <strong>ما هي لعبة المحتال؟</strong>
+        <p>لعبة كلمات جماعية ممتعة. يحصل جميع اللاعبين على كلمة سرية ما عدا المحتال. على اللاعبين اكتشاف المحتال من خلال التلميحات والتصويت.</p>
+    </div>
+
+    <div class="faq-item">
+        <strong>كيف أغير صورتي الشخصية؟</strong>
+        <p>اذهب إلى الملف الشخصي > تعديل الملف الشخصي > اضغط على أيقونة الكاميرا لاختيار صورة من معرض الصور.</p>
+    </div>
+
+    <div class="faq-item">
+        <strong>كيف أحذف حسابي؟</strong>
+        <p>اذهب إلى الملف الشخصي > الإعدادات > حذف الحساب. ستحتاج لكتابة عبارة التأكيد لإتمام الحذف.</p>
+    </div>
+
+    <div class="faq-item">
+        <strong>واجهت مشكلة في الاتصال أثناء اللعب</strong>
+        <p>تأكد من اتصالك بالإنترنت. إذا انقطع الاتصال أثناء اللعبة، سيحاول التطبيق إعادة الاتصال تلقائيا. إذا استمرت المشكلة، أعد تشغيل التطبيق.</p>
+    </div>
+
+    <div class="faq-item">
+        <strong>كيف أبلغ عن لاعب مسيء؟</strong>
+        <p>أثناء اللعبة أو في صفحة النتائج، اضغط على اسم اللاعب واختر "إبلاغ". يمكنك أيضا حظر اللاعب لمنعه من الظهور في غرفك.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <a href="index.html">سياسة الخصوصية</a>
+        <div class="copyright">المحتال &copy; 2026</div>
+    </div>
+
 </div>
 
-<h2>الأسئلة الشائعة</h2>
-
-<div class="faq-item">
-    <strong>كيف أبدأ اللعب؟</strong>
-    سجل دخولك أو ادخل كضيف، ثم أنشئ غرفة جديدة أو انضم إلى غرفة موجودة. تحتاج على الأقل 3 لاعبين لبدء اللعبة.
-</div>
-
-<div class="faq-item">
-    <strong>ما هي لعبة المحتال؟</strong>
-    لعبة كلمات جماعية ممتعة. يحصل جميع اللاعبين على كلمة سرية ما عدا المحتال. على اللاعبين اكتشاف المحتال من خلال التلميحات والتصويت.
-</div>
-
-<div class="faq-item">
-    <strong>كيف أغير صورتي الشخصية؟</strong>
-    اذهب إلى الملف الشخصي > تعديل الملف الشخصي > اضغط على أيقونة الكاميرا لاختيار صورة من معرض الصور.
-</div>
-
-<div class="faq-item">
-    <strong>كيف أحذف حسابي؟</strong>
-    اذهب إلى الملف الشخصي > الإعدادات > حذف الحساب. ستحتاج لكتابة عبارة التأكيد لإتمام الحذف.
-</div>
-
-<div class="faq-item">
-    <strong>واجهت مشكلة في الاتصال أثناء اللعب</strong>
-    تأكد من اتصالك بالإنترنت. إذا انقطع الاتصال أثناء اللعبة، سيحاول التطبيق إعادة الاتصال تلقائيا. إذا استمرت المشكلة، أعد تشغيل التطبيق.
-</div>
-
-<div class="faq-item">
-    <strong>كيف أبلغ عن لاعب مسيء؟</strong>
-    أثناء اللعبة أو في صفحة النتائج، اضغط على اسم اللاعب واختر "إبلاغ". يمكنك أيضا حظر اللاعب لمنعه من الظهور في غرفك.
-</div>
-
-<div class="footer">
-    <a href="privacy-policy.html">سياسة الخصوصية</a>
-    &nbsp;|&nbsp;
-    المحتال &copy; 2026
-</div>
+<script>
+function sendSupport() {
+    var email = document.getElementById('user-email').value;
+    var message = document.getElementById('user-message').value;
+    if (!message.trim()) {
+        alert('الرجاء كتابة رسالتك');
+        return;
+    }
+    var subject = encodeURIComponent('دعم تطبيق المحتال');
+    var body = encodeURIComponent(message + '\n\nمن: ' + (email || 'غير محدد'));
+    window.location.href = 'mailto:molu18624dev@gmail.com?subject=' + subject + '&body=' + body;
+}
+</script>
 
 </body>
 </html>
